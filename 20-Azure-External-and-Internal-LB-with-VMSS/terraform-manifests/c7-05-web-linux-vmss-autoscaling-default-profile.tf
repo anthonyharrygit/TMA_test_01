@@ -13,7 +13,8 @@ Resource: azurerm_monitor_autoscale_setting
     2. Scale-In Rule: Decrease VMs by 1when CPU usage is lower than 25%
   3. Available Memory Bytes Metric Rules
     1. Scale-Up Rule: Increase VMs by 1 when Available Memory Bytes is less than 1GB in bytes
-    2. Scale-In Rule: Decrease VMs by 1 when Available Memory Bytes is greater than 2GB in bytes
+    2. Scale-In Rule: Decrease VMs by 1 when 
+    Available Memory Bytes is greater than 2GB in bytes
 */
 
 resource "azurerm_monitor_autoscale_setting" "web_vmss_autoscale" {
@@ -39,9 +40,9 @@ resource "azurerm_monitor_autoscale_setting" "web_vmss_autoscale" {
     name = "default"
   # Capacity Block     
     capacity {
-      default = 2
-      minimum = 2
-      maximum = 6
+      default = 1
+      minimum = 1
+      maximum = 2
     }
 ###########  START: Percentage CPU Metric Rules  ###########    
   ## Scale-Out 

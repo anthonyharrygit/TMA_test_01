@@ -1,7 +1,7 @@
 business_divsion = "hr"
 environment = "dev"
 resource_group_name = "rg"
-resource_group_location = "westus2"
+resource_group_location = "eastus"
 vnet_name = "vnet"
 vnet_address_space = ["10.1.0.0/16"]
 

@@ -39,9 +39,9 @@ resource "azurerm_monitor_autoscale_setting" "app_vmss_autoscale" {
     name = "default"
   # Capacity Block     
     capacity {
-      default = 2
-      minimum = 2
-      maximum = 6
+      default = 1
+      minimum = 1
+      maximum = 2
     }
 ###########  START: Percentage CPU Metric Rules  ###########    
   ## Scale-Out 

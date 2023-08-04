@@ -194,13 +194,13 @@ resource "azurerm_monitor_autoscale_setting" "web_vmss_autoscale" {
     name = "profile-2-weekdays"
   # Capacity Block     
     capacity {
-      default = 4
-      minimum = 4
+      default = 2
+      minimum = 2
       maximum = 20
     }
   # Recurrence Block for Week Days (5 days)
     recurrence {
-      timezone = "India Standard Time"
+      timezone = "Greenwich Standard Time"
       days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
       hours = [0]
       minutes = [0]      
@@ -351,13 +351,13 @@ resource "azurerm_monitor_autoscale_setting" "web_vmss_autoscale" {
     name = "profile-3-weekends"
   # Capacity Block     
     capacity {
-      default = 3
-      minimum = 3
+      default = 2
+      minimum = 2
       maximum = 6
     }
   # Recurrence Block for Weekends (2 days)
     recurrence {
-      timezone = "India Standard Time"
+      timezone = "Greenwich Standard Time"
       days = ["Saturday", "Sunday"]
       hours = [0]
       minutes = [0]      
@@ -496,5 +496,4 @@ resource "azurerm_monitor_autoscale_setting" "web_vmss_autoscale" {
 } # End of Profile-3
 
 
-}
-*/
+}*/

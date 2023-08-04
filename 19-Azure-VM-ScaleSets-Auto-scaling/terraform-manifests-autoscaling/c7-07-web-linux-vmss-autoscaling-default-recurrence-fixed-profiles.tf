@@ -19,7 +19,7 @@ Resource: azurerm_monitor_autoscale_setting
     2. Scale-Up Rule: Decrease VMs by 1 when LB SYN Count is less than 10 Connections (Average)    
 # Adding Profile-4
 */
-/*
+
 resource "azurerm_monitor_autoscale_setting" "web_vmss_autoscale" {
   name                = "${local.resource_name_prefix}-web-vmss-autoscale-profiles"
   resource_group_name = azurerm_resource_group.rg.name
@@ -510,15 +510,15 @@ resource "azurerm_monitor_autoscale_setting" "web_vmss_autoscale" {
     name = "profile-4-fixed-profile"
   # Capacity Block     
     capacity {
-      default = 5
-      minimum = 5
+      default = 2
+      minimum = 2
       maximum = 20
     }
   # Fixed Block for a specific day
     fixed_date {
       timezone = "India Standard Time"
-      start    = "2021-08-16T00:00:00Z"  # CHANGE TO THE DATE YOU ARE TESTING
-      end      = "2021-08-16T23:59:59Z"  # CHANGE TO THE DATE YOU ARE TESTING
+      start    = "2022-10-30T00:00:00Z"  # CHANGE TO THE DATE YOU ARE TESTING
+      end      = "2022-10-30T23:59:59Z"  # CHANGE TO THE DATE YOU ARE TESTING
     }  
 ###########  START: Percentage CPU Metric Rules  ###########    
   ## Scale-Out 
@@ -656,4 +656,3 @@ resource "azurerm_monitor_autoscale_setting" "web_vmss_autoscale" {
 
 
 }
-*/

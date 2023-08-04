@@ -3,6 +3,8 @@ locals {
 webvm_custom_data = <<CUSTOM_DATA
 #!/bin/sh
 #sudo yum update -y
+sudo su -
+subscription-manager release --set=8.6 Release set to: 8.6
 sudo yum install -y httpd
 sudo systemctl enable httpd
 sudo systemctl start httpd  

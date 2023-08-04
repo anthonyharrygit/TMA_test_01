@@ -1,0 +1,5 @@
+resource "" "name" {
+  notification {
+    email
+  }
+}

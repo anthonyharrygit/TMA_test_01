@@ -1,4 +1,4 @@
-# Locals Block for custom data
+/*# Locals Block for custom data
 locals {
 webvm_custom_data = <<CUSTOM_DATA
 #!/bin/sh
@@ -16,7 +16,8 @@ sudo echo "Welcome to stacksimplify - WebVM App1 - App Status Page" > /var/www/h
 sudo echo '<!DOCTYPE html> <html> <body style="background-color:rgb(250, 210, 210);"> <h1>Welcome to Stack Simplify - WebVM APP-1 </h1> <p>Terraform Demo</p> <p>Application Version: V1</p> </body></html>' | sudo tee /var/www/html/app1/index.html
 sudo curl -H "Metadata:true" --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01" -o /var/www/html/app1/metadata.html
 CUSTOM_DATA  
-}
+}*/
+
 
 
 # Resource: Azure Linux Virtual Machine
@@ -43,6 +44,6 @@ resource "azurerm_linux_virtual_machine" "web_linuxvm" {
     version = "latest"
   }
   #custom_data = filebase64("${path.module}/app-scripts/redhat-webvm-script.sh")    
-  custom_data = base64encode(local.webvm_custom_data)  
+  #custom_data = base64encode(local.webvm_custom_data)  
 
 }

@@ -3,6 +3,8 @@ locals {
 app2_webvm_custom_data = <<CUSTOM_DATA
 #!/bin/sh
 #sudo yum update -y
+sudo su -
+sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 sudo yum install -y httpd
 sudo systemctl enable httpd
 sudo systemctl start httpd  
@@ -26,7 +28,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "app2_web_vmss" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   sku                 = "Standard_DS1_v2"
-  instances           = 2
+  instances           = 1
   admin_username      = "azureuser"
 
   admin_ssh_key {
@@ -57,7 +59,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "app2_web_vmss" {
       primary   = true
       subnet_id = azurerm_subnet.websubnet.id  
       #load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.web_lb_backend_address_pool.id]
-      application_gateway_backend_address_pool_ids = [azurerm_application_gateway.web_ag.backend_address_pool[1].id]            
+      application_gateway_backend_address_pool_ids = toset(one([azurerm_application_gateway.web_ag.backend_address_pool[*].id]))
+      #application_gateway_backend_address_pool_ids = [azurerm_application_gateway.web_ag.backend_address_pool[1].id]            
     }
   }
   #custom_data = filebase64("${path.module}/app-scripts/redhat-app1-script.sh")      
